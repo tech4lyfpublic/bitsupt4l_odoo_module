@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_search_custom_view" model="ir.ui.view">
+            <field name="name">product_custom_search_view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='categ_id']" position="after">
+                    <field name="brand_id"/>
+                    <field name="default_code"/>
+                    <field name="description"/>
+                    <field name="description_sale"/>
+                    <field name="description_purchase"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Product view -->
+        <record id="product_brand_view" model="ir.ui.view">
+            <field name="name">product_brand_view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='categ_id']" position="after">
+                    <field name="brand_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Brand Menu View -->
+        <record id="view_product_brand_form" model="ir.ui.view">
+            <field name="name">product_brand_form_view</field>
+            <field name="model">brand.brand</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="product_brand_tree_view" model="ir.ui.view">
+            <field name="name">product_brand_tree_view</field>
+            <field name="model">brand.brand</field>
+            <field name="arch" type="xml">
+                <tree string="Brand">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_product_brand" model="ir.actions.act_window">
+            <field name="name">Product Brand</field>
+            <field name="res_model">brand.brand</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="product_brand" name="Brand" parent="stock.menu_stock_config_settings"
+                  action="action_product_brand" groups="base.group_user"/>
+
+
+    </data>
+</odoo>
