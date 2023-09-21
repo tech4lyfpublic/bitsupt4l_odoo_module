@@ -13,6 +13,7 @@
         'data/ir_sequence_data.xml',
         'views/sale.xml',
         'views/product.xml',
+        'views/purchase.xml',
     ],
     'images': ['static/description/banner.png'],
     'license': 'AGPL-3',
